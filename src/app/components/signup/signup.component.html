@@ -1,0 +1,41 @@
+<div class=" mx-auto mt-5 w-50 signinform ">
+  <div id="alertdiv" *ngIf="alertvalue" class="alert alert-danger">
+    <p>Mismatch Password ! Please check</p>
+  </div>
+    <h3>SIGN UP</h3>
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input required type="text" class="form-control form-control-md" name="name" id="exampleInputEmail1" [(ngModel)]="newuser.name" aria-describedby="emailHelp"
+             ngModel #name="ngModel" placeholder="Enter email">
+            <div id="alertdiv" *ngIf="name.touched && name.invalid" class="alert alert-danger">
+              <p>Name is required</p>
+            </div>
+         
+          </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input required  ngModel #email="ngModel"  type="email" class="form-control form-control-md" name="email" id="exampleInputEmail1" [(ngModel)]="newuser.email" aria-describedby="emailHelp" placeholder="Enter email">
+          <div id="alertdiv" *ngIf="email.touched && email.invalid" class="alert alert-danger">
+            <p>Email is required</p>
+          </div>
+       
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input required ngModel #password="ngModel"  type="password" class="form-control form-control-md" name="password" id="exampleInputPassword1" [(ngModel)]="newuser.password" placeholder="Password">
+          <div id="alertdiv" *ngIf="password.touched && password.invalid" class="alert alert-danger">
+            <p>Password is required</p>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Confirm Password</label>
+            <input ngModel #confirmpassword="ngModel" required  type="password" class="form-control form-control-md" name="confirmpassword" id="exampleInputPassword1" [(ngModel)]="newuser.confirmpassword" placeholder="Password">
+            <div id="alertdiv" *ngIf="confirmpassword.touched && confirmpassword.invalid" class="alert alert-danger">
+              <p>Confirm Password is required</p>
+            </div>
+          </div>
+       
+        <button type="submit" (click)="registerUser()"class="btn btn-primary">Submit</button>
+      </form>
+</div>

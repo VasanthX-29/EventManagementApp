@@ -1,0 +1,155 @@
+<div class="container text-center ">
+
+ <div class=" row mt-3 mb-5">
+    <div class="col-md-6">
+
+        <button data-toggle="modal" class="btn btn-primary" data-target="#addEmployeeModal">Add New Employee</button>
+
+    </div>
+    <div class="col-md-6 ">
+
+     <h3 id="status" [style]="message"></h3>
+
+  </div>
+ </div>
+
+ <div class="row ">
+    <div class="col-md-12">
+      <div class="table-responsive-md">
+      <table class="table table-hover table-striped table-dark">
+  <thead>
+    <tr class="bg-info">
+      <th >#</th>
+      <th >First Name</th>
+      <th >Last Name</th>
+      <th >Email</th>
+      <th >Salary</th>
+      <th colspan="2" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td class="align-middle text-center" >{{employee.id}}</td>
+      <td class="align-middle text-center">{{employee.firstname}}</td>
+      <td class="align-middle text-center">{{employee.lastname}}</td>
+      <td class="align-middle text-center">{{employee.email}}</td>
+      <td class="align-middle text-center">{{employee.salary}}</td>
+      <td class="align-middle text-center"><button class="btn btn-warning"  data-toggle="modal" data-target="#editEmployeeModal" (click)="editempid(employee)">Edit</button></td>
+      <td class="align-middle text-center"><button class="btn btn-danger" (click)="deleteemployee(employee.id)">Delete</button></td>
+    </tr>
+  
+  </tbody>
+</table>
+</div>
+    </div>
+ </div>
+
+</div>
+<div id="footerId">
+  <p>Event Management App &nbsp;</p>
+  <p> | &copy; 2023 All rights reserved &nbsp; </p> <br>
+
+</div>
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Add new employee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="empid">Employee Id</label>
+                  <input required type="number" class="form-control" id="empid"  name="id" [(ngModel)]="employee.id" placeholder="Enter id">
+                
+                </div>
+
+                <div class="form-group">
+                  <label for="empfirstname">Employee First Name</label>
+                  <input required  type="text" class="form-control" id="empfirstname" name="firstname" [(ngModel)]="employee.firstname" placeholder="Enter frist name">
+                </div>
+
+                <div class="form-group">
+                    <label for="emplastname">Employee Last Name</label>
+                    <input required  type="text" class="form-control" id="emplastname" name="lastname" [(ngModel)]="employee.lastname" placeholder="Enter last name">
+                </div>
+
+                <div class="form-group">
+                    <label for="empemail">Employee Email</label>
+                    <input required  type="email" class="form-control" id="empemail" name="email" [(ngModel)]="employee.email" placeholder="Enter email">
+                </div>
+
+                <div class="form-group">
+                    <label for="empsalary">Employee Salary</label>
+                    <input required  type="number" class="form-control" id="empsalary" name="salary" [(ngModel)]="employee.salary" placeholder="Enter salary">
+                </div>
+           
+                <input type="submit" data-dismiss="modal" class="btn btn-primary" (click)="registerNow()" value="Register">
+              </form>
+        </div>
+        <div class="modal-footer">
+           
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Edit a employee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="empid">Employee Id</label>
+                  <input required  type="number" class="form-control"id="empid" [value]="modalid"  name="id" [(ngModel)]="editemployee.id" placeholder="Enter id">
+                
+                </div>
+
+                <div class="form-group">
+                  <label for="empfirstname">Employee First Name</label>
+                  <input required  type="text" class="form-control" id="empfirstname" [value]="modalfirstname"  name="firstname" [(ngModel)]="editemployee.firstname" placeholder="Enter first name" >
+                </div>
+
+                <div class="form-group">
+                    <label for="emplastname">Employee Last Name</label>
+                    <input required  type="text" class="form-control" id="emplastname" [value]="modallastname" name="lastname" [(ngModel)]="editemployee.lastname" placeholder="Enter last name">
+                </div>
+
+                <div class="form-group">
+                    <label for="empemail">Employee Email</label>
+                    <input required  type="email" class="form-control" id="empemail" [value]="modalemail" name="email" [(ngModel)]="editemployee.email" placeholder="Enter email">
+                </div>
+
+                <div class="form-group">
+                    <label for="empsalary">Employee Salary</label>
+                    <input required  type="number" class="form-control" id="empsalary" [value]="modalsalary" name="salary" [(ngModel)]="editemployee.salary" placeholder="Enter salary">
+                </div>
+           
+                <input type="submit" data-dismiss="modal" class="btn btn-primary" (click)="updateNow()" value="Update">
+              </form>
+        </div>
+        <div class="modal-footer">
+           
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+

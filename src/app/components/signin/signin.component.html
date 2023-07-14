@@ -1,0 +1,68 @@
+<div class=" mx-auto mt-5 w-50 signinform ">
+  <div id="alertdiv" *ngIf="alertvalue" class="alert alert-danger">
+    <p>Invalid Credentails</p>
+  </div>
+  <div id="alertdiv" *ngIf="pwdsuccess" class="alert alert-success">
+    <p>Password updated successfully</p>
+  </div>
+    <h3>SIGN IN</h3>
+    <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input  ngModel #email="ngModel" type="email" class="form-control form-control-md" name="email" id="exampleInputEmail1" [(ngModel)]="user.email" aria-describedby="emailHelp" required  placeholder="Enter email">
+          <div id="alertdiv" *ngIf="email.touched && email.invalid" class="alert alert-danger">
+            <p>Email is required</p>
+          </div>
+       
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input required  ngModel #password="ngModel" type="password" class="form-control form-control-md" name="password" id="exampleInputPassword1" [(ngModel)]="user.password" placeholder="Password">
+          <div id="alertdiv" *ngIf="password.touched && password.invalid" class="alert alert-danger">
+            <p>Password is required</p>
+          </div>
+        </div>
+       
+        <button type="submit" (click)="verifyUser()"class="btn btn-primary mb-2">Submit</button> 
+  </form>
+  <button class="btn btn-success mr-3" (click)="navigate()">New User? Register here</button>
+  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updatepwdmodal"> Update Password </button>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="updatepwdmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Update Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input required type="email" class="form-control form-control-md" name="email" id="exampleInputEmail1" [(ngModel)]="updateuser.email" aria-describedby="emailHelp" placeholder="Enter email">
+         
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">New Password</label>
+            <input  required  type="password" class="form-control form-control-md" name="password" id="exampleInputPassword1" [(ngModel)]="updateuser.password" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Confirm New Password</label>
+            <input  required  type="password" class="form-control form-control-md" name="password" id="exampleInputPassword1" [(ngModel)]="updateuser.confirmpassword" placeholder="Password">
+          </div>
+         
+          <button type="submit" (click)="updatepwd()"class="btn btn-primary mb-2">Submit</button>
+    </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>

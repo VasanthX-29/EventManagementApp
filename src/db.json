@@ -1,0 +1,48 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "firstname": "Abilash",
+      "lastname": "Parker",
+      "email": "abi@gmail.com",
+      "salary": 65000
+    },
+    {
+      "id": 3,
+      "firstname": "Suresh",
+      "lastname": "Kannan",
+      "email": "suresh@gmail.com",
+      "salary": 5000
+    },
+    {
+      "id": 4,
+      "firstname": "John",
+      "lastname": "Doe",
+      "email": "john9900@gmail.com",
+      "salary": 90000
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Akash",
+      "email": "ak@gmail.com",
+      "password": "123",
+      "confirmpassword": "123"
+    },
+    {
+      "id": 2,
+      "name": "Suresh",
+      "email": "sur@gmail.com",
+      "password": "1234",
+      "confirmpassword": "1234"
+    },
+    {
+      "email": "vinoth124@gmail.com",
+      "password": "vi789456",
+      "confirmpassword": "vi789456",
+      "name": "Vinoth Kumar",
+      "id": 3
+    }
+  ]
+}

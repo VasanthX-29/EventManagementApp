@@ -1,0 +1,13 @@
+nav{
+    background-color: #0B2447 !important;
+  
+}
+.nav-link, .navbar-brand{
+    color: white !important;
+    cursor: pointer;
+}
+
+.nav-link:hover
+{
+    border-bottom: 3px solid white;
+}
